@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+node_modules/
+**/node_modules/
+web_app/dist/
+web_app/android/.gradle/
+web_app/android/build/
+web_app/android/app/build/
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite3
+.env
+.env.*

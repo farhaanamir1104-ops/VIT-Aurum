@@ -1,46 +1,17 @@
-# SmartBudget — Personal Finance Planner
+# VIT Aurum — Personal Finance Planner
 
-A simple command-line personal finance planner built in Python.
+VIT Aurum is a personal finance planner with an offline-capable browser app and an original Python command-line version. The browser app stores ledger data in that browser profile's local storage; it does not sync data to GitHub or Google.
 
-## Features
-- Log income and expenses (with keyword-based auto-categorization)
-- Set monthly budgets per category, with over-budget alerts
-- Low-balance warnings with rotating money-saving tips
-- Monthly summary report (income, expense, net, spend by category)
-- Savings goal tracker with progress percentage
-- On-demand "good financial habit" tips
-- PIN login (salted PBKDF2 hash, slowed and capped guesses) via `security.py`
-- Recent entries with delete, month-end spending forecast, CSV export (formula-injection safe), editable alert limit
+## Open the web app
 
-## How to run
-No external libraries needed — pure Python standard library (`sqlite3`).
+Open the live web app: [VIT Aurum on GitHub Pages](https://farhaanamir1104-ops.github.io/VIT-Aurum/). The updated app becomes available when the Pages deployment finishes. To run it locally, see [`web_app/README.md`](web_app/README.md).
 
-```bash
-python main.py
-```
+## Project layout
 
-A `finance.db` SQLite file will be created automatically in this folder
-the first time you run it — that's where all your data is stored.
+- `web_app/` — Vite web app, PWA assets, and Android Capacitor setup.
+- `python_app/` — SQLite-backed Python command-line app and standalone HTML copy.
+- `.github/workflows/deploy.yml` — builds and deploys the Vite web app to GitHub Pages on pushes to `main`.
 
-## File structure
-- `database.py` — SQLite schema and connection setup
-- `categorizer.py` — keyword-based auto-categorization rules
-- `tips.py` — libraries of rotating savings/habit tips
-- `finance_manager.py` — core business logic (the "brain" of the app)
-- `security.py` — PIN hashing and login
-- `emailer.py` — sends your summary to Gmail over SMTP
-- `main.py` — command-line menu (the interface)
+## Privacy
 
-## Next steps (good ideas for your Second Review demo)
-- Add a Tkinter or Streamlit GUI on top of `finance_manager.py`
-  (no changes needed to the logic layer — just call the same methods)
-- Add CSV import for bank statements
-- Add PDF/Excel export of the monthly summary
-- Add charts (Matplotlib/Plotly) for spending by category
-
-## Emailing your summary to Gmail (menu option 13)
-Gmail needs an **App Password**, not your normal password:
-1. Turn on 2-Step Verification at https://myaccount.google.com/security
-2. Create an app password at https://myaccount.google.com/apppasswords
-3. Either set it once per session (`export GMAIL_APP_PASSWORD="abcd efgh ijkl mnop"`)
-   or type it when asked. It is never saved to disk.
+The public repository contains application source only. Your app's ledger is stored locally in the browser or installed app and is not part of this repository. Do not commit personal exports, database files, passwords, or signing keys.
